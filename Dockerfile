@@ -62,10 +62,6 @@ RUN mkdir /odtp \
     /odtp/odtp-workdir \
     /odtp/odtp-output 
 
-# This last 2 folders are specific from odtp-eqasim
-RUN mkdir /odtp/odtp-workdir/cache \
-    /odtp/odtp-workdir/output 
-
 # This copy all the information for running the ODTP component
 COPY odtp.yml /odtp/odtp-config/odtp.yml
 
