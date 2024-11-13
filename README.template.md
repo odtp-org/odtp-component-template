@@ -2,6 +2,7 @@
 
 Add here your badges:
 [![Launch in your ODTP](https://img.shields.io/badge/Launch%20in%20your-ODTP-blue?logo=launch)](http://localhost:8501/launch-component)
+[![Compatible with ODTP v0.5.x](https://img.shields.io/badge/Compatible%20with-ODTP%20v0.5.0-green)]("")
 
 > [!NOTE]  
 > This repository makes use of submodules. Therefore, when cloning it you need to include them.
@@ -139,3 +140,5 @@ docker run -it --rm \
 ## Credits and references
 
 XXXXXXXXXX
+
+This component has been created using the `odtp-component-template` `v0.5.0`. 

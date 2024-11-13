@@ -3,18 +3,18 @@ schema-version: "v0.5.0"
 
 # Component Information
 component-name: Component Name
+component-version: "vX.Y.Z"
+component-license: Component License
+component-type: ephemeral or interactive
+component-description: Description of the component's function
 component-authors:
   - name: Author One
     orcid: "https://orcid.org/0000-0001-2345-6789"
   - name: Author Two
     orcid: "https://orcid.org/0000-0002-3456-7890"
-component-version: "1.0.0"
 component-repository:
   url: "https://github.com/organization/component-repo"
   doi: "https://doi.org/10.1234/component.doi"
-component-license: Component License
-component-type: ephemeral or interactive
-component-description: Description of the component's function
 component-docker-image: "dockeruser/dockerimage:label"
 tags:
   - tag1
