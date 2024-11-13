@@ -1,27 +1,31 @@
 FROM ubuntu:22.04
 
-RUN apt update
-RUN apt install python3.10 python3-pip -y 
+LABEL maintainer="Your Name <your.email@example.com>"
+LABEL version="v0.0.1"
+LABEL description="ODTP component based on Ubuntu 22.04"
+LABEL org.opencontainers.image.title="ODTP Component"
+LABEL org.opencontainers.image.vendor="Your Organization"
+LABEL org.opencontainers.image.source="https://github.com/your-org/your-repo"
+LABEL org.opencontainers.image.licenses="XXX"
 
 ##################################################
 # Ubuntu setup
 ##################################################
 
-RUN  apt-get update \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get -y upgrade \
-  && apt-get install -y --no-install-recommends \
+# Ubuntu setup
+RUN apt update && apt install -y \
+    python3.10 \
+    python3-pip \
+    wget \
     unzip \
     nano \
-    git \ 
+    git \
     g++ \
     gcc \
     htop \
     zip \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
 ##################################################
 # ODTP setup
@@ -70,15 +74,7 @@ COPY ./odtp-component-client /odtp/odtp-component-client
 COPY ./app /odtp/odtp-app
 WORKDIR /odtp
 
-##################################################
-# Fix for end of the line issue on Windows / Avoid error when building on windows
-##################################################
-
-RUN sed -i 's/\r$//' /odtp/odtp-component-client/src/shell/log.sh
-RUN sed -i 's/\r$//' /odtp/odtp-component-client/src/shell/traceback.sh
-RUN sed -i 's/\r$//' /odtp/odtp-component-client/scripts/component-update.sh
-RUN sed -i 's/\r$//' /odtp/odtp-component-client/odtp-app.sh
-RUN sed -i 's/\r$//' /odtp/odtp-component-client/startup.sh
-RUN sed -i 's/\r$//' /odtp/odtp-app/app.sh
+# Fix for end of the line issue on Windows. Avoid error when building on windows
+RUN find /odtp -type f -iname "*.sh" -exec sed -i 's/\r$//' {} \;
 
 ENTRYPOINT ["bash", "/odtp/odtp-component-client/startup.sh"]

@@ -4,7 +4,7 @@ This is a template that facilitates the development of new `odtp-components`. An
 
 Internally a component will run a bash script `./app/app.sh` that must include the commands for running your tool, and managing the input/output logic. While input files are located in the folder `/odtp/odtp-input`, parameters values are represented by environment variables within the component. In this way you can access to them by using `$` before the name of your variable. Finally, the output files generated are requested to be placed in `/odtp/odtp-output/`.
 
-## How to clone this repository? 
+## How to clone this repository?
 
 > This repository makes use of submodules. Therefore, when cloning it you need to include them.
 >  
